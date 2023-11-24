@@ -10,7 +10,6 @@
 		<class>br.com.ztec.projeto_aurora.entity.TbEndereco</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbPerfil</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbPermissao</class>
-		<class>br.com.ztec.projeto_aurora.entity.TbPermissaoLista</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbPessoa</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbTelefone</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbUsuario</class>
