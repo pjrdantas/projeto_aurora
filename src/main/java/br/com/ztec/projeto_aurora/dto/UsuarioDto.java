@@ -11,15 +11,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @Getter
 @Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.USE_DEFAULTS)
-@JsonPropertyOrder({ "idUsuario", "usuarioAtivo", "usuarioDataCadastrado","usuarioEmail", "usuarioLogin", "usuarioNome", "usuarioSenha",
-		"perfilId" })
+@JsonPropertyOrder({ "idUsuario", "usuarioAtivo", "usuarioDataCadastrado", "usuarioEmail", "usuarioLogin",
+		"usuarioNome", "usuarioSenha", "perfilId" })
 public class UsuarioDto {
 
 	@JsonProperty("idUsuario")
@@ -33,7 +31,7 @@ public class UsuarioDto {
 
 	@JsonProperty("usuarioEmail")
 	private String usuarioEmail;
-	
+
 	@JsonProperty("usuarioLogin")
 	private String usuarioLogin;
 
@@ -48,6 +46,5 @@ public class UsuarioDto {
 
 	public UsuarioDto() {
 	}
-
 
 }
