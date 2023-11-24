@@ -18,12 +18,11 @@ public class PermissaoDto {
 	private Long idPermissao;
 
 	@JsonProperty("permissaoCodigo")
-	private String permissaoCodigoDto;
+	private String permissaoCodigo;
 
 	@JsonProperty("permissaoDescricao")
-	private String permissaoDescricaoDto;
+	private String permissaoDescricao;
 
 	public PermissaoDto() {
 	}
-
 }

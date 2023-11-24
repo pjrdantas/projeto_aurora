@@ -32,8 +32,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 		sql.append("  TB_PERMISSAO_DESCRICAO) ");
 		sql.append("  values (:tbPermissaoCodigo, :tbPermissaoDescricao)");
 		SqlParameterSource params = new MapSqlParameterSource()
-				.addValue("tbPermissaoCodigo", permissaoDto.getPermissaoCodigoDto())
-				.addValue("tbPermissaoDescricao", permissaoDto.getPermissaoDescricaoDto());
+				.addValue("tbPermissaoCodigo", permissaoDto.getPermissaoCodigo())
+				.addValue("tbPermissaoDescricao", permissaoDto.getPermissaoDescricao());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -50,8 +50,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 		sql.append(" WHERE id = :id");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("id", permissaoDto.getIdPermissao())
-				.addValue("tbPermissaoCodigo", permissaoDto.getPermissaoCodigoDto())
-				.addValue("tbPermissaoDescricao", permissaoDto.getPermissaoDescricaoDto());
+				.addValue("tbPermissaoCodigo", permissaoDto.getPermissaoCodigo())
+				.addValue("tbPermissaoDescricao", permissaoDto.getPermissaoDescricao());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -100,8 +100,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 		return jdbcTemplate.queryForObject(sql.toString(), params, (rs, i) -> {
 			PermissaoDto permissaoDto = new PermissaoDto();
 			permissaoDto.setIdPermissao(rs.getLong("id"));
-			permissaoDto.setPermissaoCodigoDto(rs.getString("tb_permissao_codigo"));
-			permissaoDto.setPermissaoDescricaoDto(rs.getString("tb_permissao_descricao"));
+			permissaoDto.setPermissaoCodigo(rs.getString("tb_permissao_codigo"));
+			permissaoDto.setPermissaoDescricao(rs.getString("tb_permissao_descricao"));
 			return permissaoDto;
 		});
 	}
@@ -111,8 +111,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 		return jdbcTemplate.query(sql.toString(), params, (rs, i) -> {
 			PermissaoDto permissaoDto = new PermissaoDto();
 			permissaoDto.setIdPermissao(rs.getLong("id"));
-			permissaoDto.setPermissaoCodigoDto(rs.getString("tb_permissao_codigo"));
-			permissaoDto.setPermissaoDescricaoDto(rs.getString("tb_permissao_descricao"));
+			permissaoDto.setPermissaoCodigo(rs.getString("tb_permissao_codigo"));
+			permissaoDto.setPermissaoDescricao(rs.getString("tb_permissao_descricao"));
 			return permissaoDto;
 		});
 	}

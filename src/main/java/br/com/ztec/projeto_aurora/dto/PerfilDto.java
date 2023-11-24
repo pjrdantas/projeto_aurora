@@ -21,10 +21,10 @@ public class PerfilDto {
 	private Long idPerfil;
 
 	@JsonProperty("perfilDescricao")
-	private String perfilDescricaoDto;
+	private String perfilDescricao;
 
 	@JsonProperty("perfilNome")
-	private String perfilNomeDto;
+	private String perfilNome;
 	
 	public PerfilDto() {
 	}

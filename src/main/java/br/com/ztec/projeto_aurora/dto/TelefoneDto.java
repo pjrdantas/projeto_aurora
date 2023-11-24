@@ -21,19 +21,19 @@ public class TelefoneDto {
 	private Long idTelefone;
 
 	@JsonProperty("telefoneDataCadastro")
-	private Date telefoneDataCadastroDto;
+	private Date telefoneDataCadastro;
 
 	@JsonProperty("telefoneDdd")
-	private String telefoneDddDto;
+	private String telefoneDdd;
 
 	@JsonProperty("telefoneNumero")
-	private String telefoneNumeroDto;
+	private String telefoneNumero;
 
 	@JsonProperty("telefoneRamal")
-	private String telefoneRamalDto;
+	private String telefoneRamal;
 
 	@JsonProperty("telefoneTipo")
-	private String telefoneTipoDto;
+	private String telefoneTipo;
 
 	@JsonProperty("pessoaId")
 	private PessoaDto pessoaDto;
@@ -41,5 +41,4 @@ public class TelefoneDto {
 	public TelefoneDto() {
 
 	}
-
 }

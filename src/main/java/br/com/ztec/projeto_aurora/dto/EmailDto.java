@@ -20,13 +20,13 @@ public class EmailDto {
 	private Long idEmail;
 	
 	@JsonProperty("emailDataCadastro")
-	private Date emailDataCadastroDto;	
+	private Date emailDataCadastro;	
 	
 	@JsonProperty("emailDescr")
-	private String emailDescrDto;	
+	private String emailDescr;	
 	
 	@JsonProperty("emailTipo")
-	private String emailTipoDto;	
+	private String emailTipo;	
 	
 	@JsonProperty("pessoaId")
 	private PessoaDto pessoaDto;

@@ -22,22 +22,22 @@ public class DocumentoDto {
 	private Long idDocumento;
 
 	@JsonProperty("documentoCnpj")
-	private String documentoCnpjDto;
+	private String documentoCnpj;
 
 	@JsonProperty("documentoCpf")
-	private String documentoCpfDto;
+	private String documentoCpf;
 
 	@JsonProperty("documentoFuncional")
-	private String documentoFuncionalDto;
+	private String documentoFuncional;
 
 	@JsonProperty("documentoInscrEst")
-	private String documentoInscrEstDto;
+	private String documentoInscrEst;
 
 	@JsonProperty("documentoInscrMun")
-	private String documentoInscrMunDto;
+	private String documentoInscrMun;
 
 	@JsonProperty("documentoRg")
-	private String documentoRgDto;
+	private String documentoRg;
 
 	@JsonProperty("pessoaId")
 	private PessoaDto pessoaDto;

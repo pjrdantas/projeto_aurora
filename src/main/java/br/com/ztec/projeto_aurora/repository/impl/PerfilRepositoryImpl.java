@@ -32,8 +32,8 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append("  TB_PERFIL_NOME) ");
 		sql.append("  values (:tbPerfilDescricao, :tbPerfilNome)");
 		SqlParameterSource params = new MapSqlParameterSource()
-				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricaoDto())
-				.addValue("tbPerfilNome", perfilDto.getPerfilNomeDto());
+				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
+				.addValue("tbPerfilNome", perfilDto.getPerfilNome());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -49,8 +49,8 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append(" WHERE id = :id");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("id", perfilDto.getIdPerfil())
-				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricaoDto())
-				.addValue("tbPerfilNome", perfilDto.getPerfilNomeDto());
+				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
+				.addValue("tbPerfilNome", perfilDto.getPerfilNome());
 
 		jdbcTemplate.update(sql.toString(), params);
 		
@@ -99,8 +99,8 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 			PerfilDto perfilDto = new PerfilDto();
 			
 			perfilDto.setIdPerfil(rs.getLong("id"));
-			perfilDto.setPerfilDescricaoDto(rs.getString("TB_PERFIL_DESCRICAO"));
-			perfilDto.setPerfilNomeDto(rs.getString("TB_PERFIL_NOME"));			
+			perfilDto.setPerfilDescricao(rs.getString("TB_PERFIL_DESCRICAO"));
+			perfilDto.setPerfilNome(rs.getString("TB_PERFIL_NOME"));			
 			return perfilDto;
 		});
 	}
@@ -109,8 +109,8 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		return jdbcTemplate.query(sql.toString(), params, (rs, i) -> {
 			PerfilDto perfilDto = new PerfilDto();
 			perfilDto.setIdPerfil(rs.getLong("id"));
-			perfilDto.setPerfilDescricaoDto(rs.getString("TB_PERFIL_DESCRICAO"));
-			perfilDto.setPerfilNomeDto(rs.getString("TB_PERFIL_NOME"));
+			perfilDto.setPerfilDescricao(rs.getString("TB_PERFIL_DESCRICAO"));
+			perfilDto.setPerfilNome(rs.getString("TB_PERFIL_NOME"));
 
 			return perfilDto;
 		});

@@ -20,31 +20,31 @@ public class EnderecoDto {
 	private Long idEndereco;
 
 	@JsonProperty("enderecoBairro")
-	private String enderecoBairroDto;
+	private String enderecoBairro;
 
 	@JsonProperty("enderecoCep")
-	private String enderecoCepDto;
+	private String enderecoCep;
 
 	@JsonProperty("enderecoCidade")
-	private String enderecoCidadeDto;
+	private String enderecoCidade;
 
 	@JsonProperty("enderecoComplemento")
 	private String enderecoComplemento;
 
 	@JsonProperty("enderecoDataCadastro")
-	private Date enderecoDataCadastroDto;
+	private Date enderecoDataCadastro;
 
 	@JsonProperty("enderecoLogradouro")
-	private String enderecoLogradouroDto;
+	private String enderecoLogradouro;
 
 	@JsonProperty("enderecoNumero")
-	private String enderecoNumeroDto;
+	private String enderecoNumero;
 
 	@JsonProperty("enderecoTipo")
-	private String enderecoTipoDto;
+	private String enderecoTipo;
 
 	@JsonProperty("enderecoUf")
-	private String enderecoUfDto;
+	private String enderecoUf;
 	
 	@JsonProperty("pessoaId")
 	private PessoaDto pessoaDto;

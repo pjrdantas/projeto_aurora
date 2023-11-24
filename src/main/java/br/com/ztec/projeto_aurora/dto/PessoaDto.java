@@ -24,28 +24,28 @@ public class PessoaDto {
 	private Long idPessoa;
 
 	@JsonProperty("pessoaAtivo")
-	private int pessoaAtivoDto;
+	private int pessoaAtivo;
 
 	@JsonProperty("pessoaDataCadastro")
-	private Date pessoaDataCadastroDto;
+	private Date pessoaDataCadastro;
 
 	@JsonProperty("pessoaDataNascAbertura")
-	private Date pessoaDataNascAberturaDto;
+	private Date pessoaDataNascAbertura;
 
 	@JsonProperty("pessoaIsento")
-	private int pessoaIsentoDto;
+	private int pessoaIsento;
 
 	@JsonProperty("pessoaNomeRazaoSocial")
-	private String pessoaNomeRazaoSocialDto;
+	private String pessoaNomeRazaoSocial;
 
 	@JsonProperty("pessoaPessExpPolit")
-	private int pessoaPessExpPolitDto;
+	private int pessoaPessExpPolit;
 
 	@JsonProperty("pessoaPfPj")
-	private String pessoaPfPjDto;
+	private String pessoaPfPj;
 
 	@JsonProperty("pessoaSexo")
-	private String pessoaSexoDto;
+	private String pessoaSexo;
 
 	@JsonProperty("pessoaTipo")
 	private String pessoaTipo;
