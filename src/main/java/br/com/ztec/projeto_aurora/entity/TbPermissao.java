@@ -1,14 +1,20 @@
 package br.com.ztec.projeto_aurora.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 
 @Getter
@@ -25,15 +31,15 @@ public class TbPermissao implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Column(name="TB_PERMISSAO_CODIGO", nullable=false, length=255)
+	@Column(name="TB_PERMISSAO_CODIGO")
 	private String tbPermissaoCodigo;
 
-	@Column(name="TB_PERMISSAO_DESCRICAO", nullable=false, length=255)
+	@Column(name="TB_PERMISSAO_DESCRICAO")
 	private String tbPermissaoDescricao;
 
-	//bi-directional many-to-one association to TbPermissaoLista
+	//bi-directional many-to-one association to TbPerfil
 	@OneToMany(mappedBy="tbPermissao")
-	private List<TbPermissaoLista> tbPermissaoListas;
+	private List<TbPerfil> tbPerfils;
 
 	public TbPermissao() {
 	}
