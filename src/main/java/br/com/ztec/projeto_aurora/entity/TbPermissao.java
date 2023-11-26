@@ -37,7 +37,6 @@ public class TbPermissao implements Serializable {
 	@Column(name="TB_PERMISSAO_DESCRICAO")
 	private String tbPermissaoDescricao;
 
-	//bi-directional many-to-one association to TbPerfil
 	@OneToMany(mappedBy="tbPermissao")
 	private List<TbPerfil> tbPerfils;
 

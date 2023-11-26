@@ -53,12 +53,12 @@ public class TbUsuario implements Serializable {
 	@Column(name="TB_USUARIO_SENHA")
 	private String tbUsuarioSenha;
 
-	@OneToMany(mappedBy="tbUsuario")
-	private List<TbPessoa> tbPessoas;
-
 	@ManyToOne
 	@JoinColumn(name="TB_PERFIL_ID")
 	private TbPerfil tbPerfil;
+
+	@OneToMany(mappedBy="tbUsuario")
+	private List<TbPessoa> tbPessoas;
 
 	public TbUsuario() {
 	}

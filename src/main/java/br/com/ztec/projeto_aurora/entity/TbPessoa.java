@@ -65,6 +65,10 @@ public class TbPessoa implements Serializable {
 
 	@Column(name="TB_PESSOA_TIPO")
 	private String tbPessoaTipo;
+	
+	@ManyToOne
+	@JoinColumn(name="TB_USUARIO_ID")
+	private TbUsuario tbUsuario;
 
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbContato> tbContatos;
@@ -77,10 +81,6 @@ public class TbPessoa implements Serializable {
 
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbEndereco> tbEnderecos;
-
-	@ManyToOne
-	@JoinColumn(name="TB_USUARIO_ID")
-	private TbUsuario tbUsuario;
 
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbTelefone> tbTelefones;

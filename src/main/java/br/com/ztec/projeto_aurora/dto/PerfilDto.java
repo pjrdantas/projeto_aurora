@@ -26,6 +26,9 @@ public class PerfilDto {
 	@JsonProperty("perfilNome")
 	private String perfilNome;
 	
+	@JsonProperty("permissaoId")
+	private PermissaoDto permissaoDto;
+	
 	public PerfilDto() {
 	}
 
