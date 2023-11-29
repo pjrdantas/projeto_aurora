@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.USE_DEFAULTS)
 @JsonPropertyOrder({ "idPermissao", "permissaoCodigo", "permissaoDescricao" })
 public class PermissaoDto {
 

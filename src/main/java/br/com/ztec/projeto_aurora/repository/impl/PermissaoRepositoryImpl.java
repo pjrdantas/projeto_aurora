@@ -17,8 +17,6 @@ import br.com.ztec.projeto_aurora.repository.PermissaoRepository;
 @Repository
 public class PermissaoRepositoryImpl implements PermissaoRepository {
 
-
-
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -72,9 +70,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 
 	@Override
 	public PermissaoDto findPermissaoById(Long id) throws SQLException {
-		
 		StringBuilder sql = new StringBuilder(sqlSelectPrincipal);
-		sql.append(" WHERE id = :id");
+		sql.append(" WHERE id = :id ");
 		SqlParameterSource params = new MapSqlParameterSource().addValue("id", id);
 		return devolveObjeto(sql, params);
 	}
@@ -83,7 +80,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 	@Override
 	public List<PermissaoDto> findAllPermissaos() throws SQLException {
 		
-		StringBuilder sql = new StringBuilder(sqlSelectPrincipal).append(" order by tb_permissao_codigo ");
+		StringBuilder sql = new StringBuilder(sqlSelectPrincipal).append(" order by id ");
 		return devolveListaObjetos(sql, null);
 	}
 

@@ -74,7 +74,6 @@ public class PerfilController {
 	@ApiOperation(value = "ATUALIZAR PERFIL -  (Perfil)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK"),
-			@ApiResponse(code = 201, message = "Criado."),
 			@ApiResponse(code = 204, message = "Requisição foi bem-sucedida."),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
 			@ApiResponse(code = 403, message = "Acesso Proibido"),
@@ -135,13 +134,8 @@ public class PerfilController {
 	public ResponseEntity<PerfilDto> findById(@PathVariable("idPerfil") Long idPerfil) {
 
 		try {
-			PerfilDto rulers = perrfilService.findPerfilById(idPerfil);
-
-			if (rulers != null) {
-				return new ResponseEntity<>(rulers, HttpStatus.FOUND);
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
+						 
+			return new ResponseEntity<>(perrfilService.findPerfilById(idPerfil),(HttpStatus.OK));			 
 		} catch (NoSuchElementException e) {
 			_logger.warn("Perfil não encontrada para o ID: {}", idPerfil);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -163,10 +157,10 @@ public class PerfilController {
 	public ResponseEntity<List<PerfilDto>> findAll() {
 
 		try {
-			List<PerfilDto> rulers = perrfilService.findAllPerfils();
-			if (!rulers.isEmpty()) {
+			List<PerfilDto> perfil = perrfilService.findAllPerfils();
+			if (!perfil.isEmpty()) {
 				_logger.info("Lista de permissões obtida com sucesso!");
-				return new ResponseEntity<>(rulers, HttpStatus.OK);
+				return new ResponseEntity<>(perfil, HttpStatus.OK);
 			} else {
 				_logger.warn("Lista de permissões está vazia!");
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);

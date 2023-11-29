@@ -74,7 +74,6 @@ public class PermissaoController {
 	@ApiOperation(value = "ATUALIZAR PERMISSÃO -  (Permissao)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK"),
-			@ApiResponse(code = 201, message = "Criado."),
 			@ApiResponse(code = 204, message = "Requisição foi bem-sucedida."),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
 			@ApiResponse(code = 403, message = "Acesso Proibido"),
@@ -135,13 +134,8 @@ public class PermissaoController {
 	public ResponseEntity<PermissaoDto> findById(@PathVariable("idPermissao") Long idPermissao) {
 
 		try {
-			PermissaoDto rulers = permissaoService.findPermissaoById(idPermissao);
-
-			if (rulers != null) {
-				return new ResponseEntity<>(rulers, HttpStatus.FOUND);
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
+			
+			return new ResponseEntity<>(permissaoService.findPermissaoById(idPermissao),(HttpStatus.OK));			
 		} catch (NoSuchElementException e) {
 			_logger.warn("Permissao não encontrada para o ID: {}", idPermissao);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

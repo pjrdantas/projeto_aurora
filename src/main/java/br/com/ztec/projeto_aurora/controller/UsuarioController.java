@@ -74,7 +74,6 @@ public class UsuarioController {
 	@ApiOperation(value = "ATUALIZAR USUARIO -  (Usuario)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK"),
-			@ApiResponse(code = 201, message = "Criado."),
 			@ApiResponse(code = 204, message = "Requisição foi bem-sucedida."),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
 			@ApiResponse(code = 403, message = "Acesso Proibido"),
@@ -135,13 +134,7 @@ public class UsuarioController {
 	public ResponseEntity<UsuarioDto> findById(@PathVariable("idUsuario") Long idUsuario) {
 
 		try {
-			UsuarioDto rulers = usuario.findUsuarioById(idUsuario);
-
-			if (rulers != null) {
-				return new ResponseEntity<>(rulers, HttpStatus.FOUND);
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
+			return new ResponseEntity<>(usuario.findUsuarioById(idUsuario),(HttpStatus.OK));			
 		} catch (NoSuchElementException e) {
 			_logger.warn("Usuario não encontrada para o ID: {}", idUsuario);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
