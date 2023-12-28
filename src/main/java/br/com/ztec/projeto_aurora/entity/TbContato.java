@@ -19,7 +19,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * The persistent class for the TB_CONTATO database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -31,7 +34,6 @@ public class TbContato implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Temporal(TemporalType.DATE)
@@ -44,13 +46,11 @@ public class TbContato implements Serializable {
 	@Column(name="TB_CONTATO_TIPO")
 	private String tbContatoTipo;
 
+	//bi-directional many-to-one association to TbPessoa
 	@ManyToOne
 	@JoinColumn(name="TB_PESSOA_ID")
 	private TbPessoa tbPessoa;
 
 	public TbContato() {
 	}
-
-
-
 }

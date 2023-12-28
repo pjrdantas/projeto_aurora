@@ -20,6 +20,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_ENDERECO database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -31,7 +35,6 @@ public class TbEndereco implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Column(name="TB_ENDERECO_BAIRRO")
@@ -62,12 +65,11 @@ public class TbEndereco implements Serializable {
 	@Column(name="TB_ENDERECO_UF")
 	private String tbEnderecoUf;
 
+	//bi-directional many-to-one association to TbPessoa
 	@ManyToOne
 	@JoinColumn(name="TB_PESSOA_ID")
 	private TbPessoa tbPessoa;
 
 	public TbEndereco() {
 	}
-
-
 }

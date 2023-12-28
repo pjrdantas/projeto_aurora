@@ -20,6 +20,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_TELEFONE database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -31,7 +35,6 @@ public class TbTelefone implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Temporal(TemporalType.DATE)
@@ -50,12 +53,11 @@ public class TbTelefone implements Serializable {
 	@Column(name="TB_TELEFONE_TIPO")
 	private String tbTelefoneTipo;
 
+	//bi-directional many-to-one association to TbPessoa
 	@ManyToOne
 	@JoinColumn(name="TB_PESSOA_ID")
 	private TbPessoa tbPessoa;
 
 	public TbTelefone() {
 	}
-
-
 }

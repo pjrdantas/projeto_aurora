@@ -29,13 +29,13 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append("  INSERT INTO ");
 		sql.append("  TB_PERFIL (");
 		sql.append("  TB_PERFIL_DESCRICAO, ");
-		sql.append("  TB_PERFIL_NOME ");
+		sql.append("  TB_PERFIL_NOME, ");
 		sql.append("  TB_PERMISSAO_ID) ");
 		sql.append("  values (:tbPerfilDescricao, :tbPerfilNome, :tbPermissao)");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
 				.addValue("tbPerfilNome", perfilDto.getPerfilNome())
-				.addValue("tbPermissao", perfilDto.getPermissaoDto());
+				.addValue("tbPermissao", perfilDto.getIdPermissao());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -47,15 +47,14 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append(" UPDATE TB_PERFIL ");
 		sql.append(" SET  ");
 		sql.append(" TB_PERFIL_DESCRICAO = :tbPerfilDescricao, ");
-		sql.append(" TB_PERFIL_NOME = :tbPerfilNome ");
-		sql.append(" TB_PERFIL_NOME = :tbPerfilNome ");
+		sql.append(" TB_PERFIL_NOME = :tbPerfilNome, ");
 		sql.append(" TB_PERMISSAO_ID ");
 		sql.append(" WHERE id = :id");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("id", perfilDto.getIdPerfil())
 				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
 				.addValue("tbPerfilNome", perfilDto.getPerfilNome())
-				.addValue("tbPermissao", perfilDto.getPermissaoDto());
+				.addValue("tbPermissao", perfilDto.getIdPermissao());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -85,7 +84,7 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 	@Override
 	public List<PerfilDto> findAllPerfils() throws SQLException {
 		
-		StringBuilder sql = new StringBuilder(sqlSelectPrincipal).append(" order by TB_PERFIL_NOME ");
+		StringBuilder sql = new StringBuilder(sqlSelectPrincipal).append(" order by id ");
 		return devolveListaObjetos(sql, null);
 	}
 	

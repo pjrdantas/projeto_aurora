@@ -19,6 +19,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_PERFIL database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -30,7 +34,6 @@ public class TbPerfil implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Column(name="TB_PERFIL_DESCRICAO")
@@ -39,16 +42,15 @@ public class TbPerfil implements Serializable {
 	@Column(name="TB_PERFIL_NOME")
 	private String tbPerfilNome;
 
+	//bi-directional many-to-one association to TbUsuario
 	@ManyToOne
-	@JoinColumn(name="TB_PERMISSAO_ID")
-	private TbPermissao tbPermissao;
+	@JoinColumn(name="TB_USUARIO_ID")
+	private TbUsuario tbUsuario;
 
+	//bi-directional many-to-one association to TbPermissao
 	@OneToMany(mappedBy="tbPerfil")
-	private List<TbUsuario> tbUsuarios;
+	private List<TbPermissao> tbPermissaos;
 
 	public TbPerfil() {
 	}
-
-
-
 }

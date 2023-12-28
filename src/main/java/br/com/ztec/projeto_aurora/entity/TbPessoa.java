@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,6 +21,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_PESSOA database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,7 +36,6 @@ public class TbPessoa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Column(name="TB_PESSOA_ATIVO")
@@ -63,30 +64,30 @@ public class TbPessoa implements Serializable {
 	@Column(name="TB_PESSOA_SEXO")
 	private String tbPessoaSexo;
 
-	@Column(name="TB_PESSOA_TIPO")
-	private String tbPessoaTipo;
-	
-	@ManyToOne
-	@JoinColumn(name="TB_USUARIO_ID")
-	private TbUsuario tbUsuario;
-
+	//bi-directional many-to-one association to TbContato
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbContato> tbContatos;
 
+	//bi-directional many-to-one association to TbDocumento
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbDocumento> tbDocumentos;
 
+	//bi-directional many-to-one association to TbEmail
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbEmail> tbEmails;
 
+	//bi-directional many-to-one association to TbEndereco
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbEndereco> tbEnderecos;
 
+	//bi-directional many-to-one association to TbTelefone
 	@OneToMany(mappedBy="tbPessoa")
 	private List<TbTelefone> tbTelefones;
 
+	//bi-directional many-to-one association to TbUsuario
+	@OneToMany(mappedBy="tbPessoa")
+	private List<TbUsuario> tbUsuarios;
+
 	public TbPessoa() {
 	}
-
-
 }

@@ -133,8 +133,7 @@ public class PerfilController {
 	@RequestMapping(value = "/findById/{idPerfil}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<PerfilDto> findById(@PathVariable("idPerfil") Long idPerfil) {
 
-		try {
-						 
+		try {						 
 			return new ResponseEntity<>(perrfilService.findPerfilById(idPerfil),(HttpStatus.OK));			 
 		} catch (NoSuchElementException e) {
 			_logger.warn("Perfil não encontrada para o ID: {}", idPerfil);
@@ -159,14 +158,14 @@ public class PerfilController {
 		try {
 			List<PerfilDto> perfil = perrfilService.findAllPerfils();
 			if (!perfil.isEmpty()) {
-				_logger.info("Lista de permissões obtida com sucesso!");
+				_logger.info("Lista de perfil obtida com sucesso!");
 				return new ResponseEntity<>(perfil, HttpStatus.OK);
 			} else {
-				_logger.warn("Lista de permissões está vazia!");
+				_logger.warn("Lista de perfil está vazia!");
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			_logger.error("Erro ao listar as permissões: ", e.getCause());
+			_logger.error("Erro ao listar as perfil: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

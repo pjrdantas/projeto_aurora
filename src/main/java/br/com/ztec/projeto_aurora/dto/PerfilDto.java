@@ -13,8 +13,8 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "idPerfil", "perfilDescricao", "perfilNome" })
+@JsonInclude(JsonInclude.Include.USE_DEFAULTS)
+@JsonPropertyOrder({ "idPerfil", "perfilDescricao", "perfilNome", "permissaoId", "permissaoCd" })
 public class PerfilDto {
 
 	@JsonProperty("idPerfil")
@@ -26,8 +26,11 @@ public class PerfilDto {
 	@JsonProperty("perfilNome")
 	private String perfilNome;
 	
-	@JsonProperty("permissaoId")
-	private PermissaoDto permissaoDto;
+	@JsonProperty("idPermissao")
+	private long idPermissao;
+	
+	@JsonProperty("permissaoCd")
+	private String permissaoCd;
 	
 	public PerfilDto() {
 	}

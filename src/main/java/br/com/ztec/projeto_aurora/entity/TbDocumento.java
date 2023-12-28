@@ -17,6 +17,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_DOCUMENTO database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -28,7 +32,6 @@ public class TbDocumento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
 	@Column(name="TB_DOCUMENTO_CNPJ")
@@ -49,13 +52,11 @@ public class TbDocumento implements Serializable {
 	@Column(name="TB_DOCUMENTO_RG")
 	private String tbDocumentoRg;
 
+	//bi-directional many-to-one association to TbPessoa
 	@ManyToOne
 	@JoinColumn(name="TB_PESSOA_ID")
 	private TbPessoa tbPessoa;
 
 	public TbDocumento() {
 	}
-
-
-
 }

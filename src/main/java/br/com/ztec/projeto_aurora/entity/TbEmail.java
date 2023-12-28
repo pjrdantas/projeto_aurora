@@ -20,6 +20,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+/**
+ * The persistent class for the TB_EMAIL database table.
+ * 
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -31,10 +35,9 @@ public class TbEmail implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name="TB_EMAIL_DATA_CADASTRO")
 	private Date tbEmailDataCadastro;
 
@@ -44,12 +47,11 @@ public class TbEmail implements Serializable {
 	@Column(name="TB_EMAIL_TIPO")
 	private String tbEmailTipo;
 
+	//bi-directional many-to-one association to TbPessoa
 	@ManyToOne
 	@JoinColumn(name="TB_PESSOA_ID")
 	private TbPessoa tbPessoa;
 
 	public TbEmail() {
 	}
-
-
 }
