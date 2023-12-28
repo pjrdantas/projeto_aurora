@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+
 /**
  * The persistent class for the TB_PERFIL database table.
  * 
@@ -47,10 +48,11 @@ public class TbPerfil implements Serializable {
 	@JoinColumn(name="TB_USUARIO_ID")
 	private TbUsuario tbUsuario;
 
-	//bi-directional many-to-one association to TbPermissao
+	//bi-directional many-to-one association to TbPermissaoLista
 	@OneToMany(mappedBy="tbPerfil")
-	private List<TbPermissao> tbPermissaos;
+	private List<TbPermissaoLista> tbPermissaoListas;
 
 	public TbPerfil() {
 	}
+
 }

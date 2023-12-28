@@ -21,6 +21,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+
 /**
  * The persistent class for the TB_PESSOA database table.
  * 
