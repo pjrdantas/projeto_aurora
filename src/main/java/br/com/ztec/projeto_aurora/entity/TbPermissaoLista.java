@@ -1,16 +1,31 @@
 package br.com.ztec.projeto_aurora.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
  * The persistent class for the TB_PERMISSAO_LISTA database table.
  * 
  */
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
 @Entity
 @Table(name="TB_PERMISSAO_LISTA")
-@NamedQuery(name="TbPermissaoLista.findAll", query="SELECT t FROM TbPermissaoLista t")
 public class TbPermissaoLista implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,30 +44,6 @@ public class TbPermissaoLista implements Serializable {
 	private TbPermissao tbPermissao;
 
 	public TbPermissaoLista() {
-	}
-
-	public Long getId() {
-		return this.id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public TbPerfil getTbPerfil() {
-		return this.tbPerfil;
-	}
-
-	public void setTbPerfil(TbPerfil tbPerfil) {
-		this.tbPerfil = tbPerfil;
-	}
-
-	public TbPermissao getTbPermissao() {
-		return this.tbPermissao;
-	}
-
-	public void setTbPermissao(TbPermissao tbPermissao) {
-		this.tbPermissao = tbPermissao;
 	}
 
 }

@@ -37,7 +37,7 @@ public class PerfilController {
 	private static final Logger _logger = LoggerFactory.getLogger(PerfilController.class);
 	
 	@Autowired
-	private PerfilService perrfilService;
+	private PerfilService perfilService;
 	
 	@ApiOperation(value = "INCLUIR PERFIL - (Perfil)")
 	@ApiResponses(value = { 
@@ -53,8 +53,9 @@ public class PerfilController {
 	public ResponseEntity<Void>  create(@RequestBody PerfilDto perfilDto) {
 		
 		try {		
-			this.perrfilService.createPerfilDto(perfilDto);
+			this.perfilService.createPerfilDto(perfilDto);
 			if (perfilDto != null) {
+				_logger.info("Perfil criado com sucesso!");
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else {
 				_logger.error("O registro não pode ser nulo. Por favor, forneça os dados necessários.");
@@ -83,7 +84,8 @@ public class PerfilController {
 	public ResponseEntity<Void> update(@RequestBody PerfilDto perfilDto) {
 
 		try {
-			this.perrfilService.updatePerfilDto(perfilDto);
+			this.perfilService.updatePerfilDto(perfilDto);
+			_logger.info("Perfil atualizado com sucesso!");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {
 			_logger.error("Erro de integridade ao atualizar o perfil. Verifique se os dados são válidos.",
@@ -109,7 +111,8 @@ public class PerfilController {
 	public ResponseEntity<Void> delete(@PathVariable("idPerfil") Long idPerfil) {
 
 		try {
-			perrfilService.deletePerfil(idPerfil);
+			perfilService.deletePerfil(idPerfil);
+			_logger.info("Perfil excluido com sucesso!");
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (EmptyResultDataAccessException e) {
 			_logger.warn("Nenhuma perfil foi encontrado para excluir com o ID: {}", idPerfil);
@@ -133,10 +136,11 @@ public class PerfilController {
 	@RequestMapping(value = "/findById/{idPerfil}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<PerfilDto> findById(@PathVariable("idPerfil") Long idPerfil) {
 
-		try {						 
-			return new ResponseEntity<>(perrfilService.findPerfilById(idPerfil),(HttpStatus.OK));			 
+		try {
+			_logger.info("Perfil encontrado!");
+			return new ResponseEntity<>(perfilService.findPerfilById(idPerfil),(HttpStatus.OK));			 
 		} catch (NoSuchElementException e) {
-			_logger.warn("Perfil não encontrada para o ID: {}", idPerfil);
+			_logger.warn("Perfil não encontrado para o ID: {}", idPerfil);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			_logger.error("Erro ao buscar o perfil por ID: {}", idPerfil, e.getCause());
@@ -156,7 +160,7 @@ public class PerfilController {
 	public ResponseEntity<List<PerfilDto>> findAll() {
 
 		try {
-			List<PerfilDto> perfil = perrfilService.findAllPerfils();
+			List<PerfilDto> perfil = perfilService.findAllPerfils();
 			if (!perfil.isEmpty()) {
 				_logger.info("Lista de perfil obtida com sucesso!");
 				return new ResponseEntity<>(perfil, HttpStatus.OK);
@@ -165,7 +169,7 @@ public class PerfilController {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			_logger.error("Erro ao listar as perfil: ", e.getCause());
+			_logger.error("Erro ao listar os perfil: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import br.com.ztec.projeto_aurora.entity.TbPessoa;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.USE_DEFAULTS)
 @JsonPropertyOrder({ "idUsuario", "usuarioAtivo", "usuarioDataCadastrado", "usuarioEmail", "usuarioLogin",
-		"usuarioNome", "usuarioSenha", "perfilId" })
+		"usuarioNome", "usuarioSenha", "pessoaId" })
 public class UsuarioDto {
 
 	@JsonProperty("idUsuario")
@@ -41,8 +42,8 @@ public class UsuarioDto {
 	@JsonProperty("usuarioSenha")
 	private String usuarioSenha;
 
-	@JsonProperty("perfilId")
-	private PerfilDto perfilDto;
+	@JsonProperty("pessoaId")
+	private TbPessoa tbPessoa;
 
 	public UsuarioDto() {
 	}

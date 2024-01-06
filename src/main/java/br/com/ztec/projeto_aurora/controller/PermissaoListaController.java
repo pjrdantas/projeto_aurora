@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ztec.projeto_aurora.dto.PermissaoDto;
-import br.com.ztec.projeto_aurora.service.PermissaoService;
+import br.com.ztec.projeto_aurora.dto.PermissaoListaDto;
+import br.com.ztec.projeto_aurora.service.PermissaoListaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -31,15 +31,15 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @Validated
 @Api(value = "service")
-@RequestMapping("/service/permissao")
-public class PermissaoController {
-
-	private static final Logger _logger = LoggerFactory.getLogger(PermissaoController.class);
+@RequestMapping("/service/permissaoLista")
+public class PermissaoListaController {
+	
+	private static final Logger _logger = LoggerFactory.getLogger(PermissaoListaController.class);
 	
 	@Autowired
-	private PermissaoService permissaoService;
+	private PermissaoListaService permissaoListaService;
 	
-	@ApiOperation(value = "INCLUIR PERMISSÃO - (Permissao)")
+	@ApiOperation(value = "INCLUIR PERMISSÃO DE PERFIL- (PermissaoLista)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Ok"),
 			@ApiResponse(code = 201, message = "Criado."),
@@ -50,29 +50,28 @@ public class PermissaoController {
 			@ApiResponse(code = 409, message = "Erro de integridade do registro."),
 			@ApiResponse(code = 500, message = "Foi gerada uma exceção."), })
 	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
-	public ResponseEntity<Void>  create(@RequestBody PermissaoDto permissaoDto) {
+	public ResponseEntity<Void>  create(@RequestBody PermissaoListaDto permissaoListaDto) {
 		
 		try {		
-			this.permissaoService.createPermissaoDto(permissaoDto);
-			if (permissaoDto != null) {
-				_logger.info("Permissão criada com sucesso!");
+			this.permissaoListaService.createPermissaoListaDto(permissaoListaDto);
+			if (permissaoListaDto != null) {
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else {
-				_logger.error("O registro não pode ser nulo. Por favor, forneça os dados necessários.");
+				_logger.warn("O registro não pode ser nulo. Por favor, forneça os dados necessários.");
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}			
 		} catch (DataIntegrityViolationException e) {
-			_logger.error("Erro de integridade ao criar a permissao. Verifique se os dados são válidos.", e.getCause());
+			_logger.error("Erro de integridade ao criar o registro permissaoLista. Verifique se os dados são válidos.", e.getCause());
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		} catch (Exception e) {
-			_logger.error("Ocorreu um erro na inclusão da permissao: ", e.getCause());
+			_logger.error("Ocorreu um erro na inclusão do permissaoLista: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
 	
 
-	@ApiOperation(value = "ATUALIZAR PERMISSÃO -  (Permissao)")
+	@ApiOperation(value = "ATUALIZAR PERMISSÃO DE PERFIL -  (PermissaoLista)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "OK"),
 			@ApiResponse(code = 204, message = "Requisição foi bem-sucedida."),
@@ -81,25 +80,24 @@ public class PermissaoController {
 			@ApiResponse(code = 404, message = "Não Localizado"),
 			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json")
-	public ResponseEntity<Void> update(@RequestBody PermissaoDto permissaoDto) {
+	public ResponseEntity<Void> update(@RequestBody PermissaoListaDto permissaoListaDto) {
 
 		try {
-			this.permissaoService.updatePermissaoDto(permissaoDto);
-			_logger.info("Permissão atualizada com sucesso!");
+			this.permissaoListaService.updatePermissaoListaDto(permissaoListaDto);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {
-			_logger.error("Erro de integridade ao atualizar a permissao. Verifique se os dados são válidos.",
+			_logger.error("Erro de integridade ao atualizar o registro da Permissão de perfil. Verifique se os dados são válidos.",
 					e.getCause());
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		} catch (Exception e) {
-			_logger.error("Erro ao atualizar a permissao: ", e.getCause());
+			_logger.error("Erro ao atualizar o a Permissão de perfil: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	
 
-	@ApiOperation(value = "EXCLUIR A PERMISSÃO POR ID - (Permissao)")
+	@ApiOperation(value = "EXCLUIR A PERMISSÃO DE PERFIL POR ID - (PermissaoLista)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "ok"),
 			@ApiResponse(code = 204, message = "Requisição foi bem-sucedida."),
@@ -107,18 +105,17 @@ public class PermissaoController {
 			@ApiResponse(code = 403, message = "Acesso Proibido"),
 			@ApiResponse(code = 404, message = "Não Localizado"),
 			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
-	@RequestMapping(value = "/delete/{idPermissao}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<Void> delete(@PathVariable("idPermissao") Long idPermissao) {
+	@RequestMapping(value = "/delete/{idPermissaoLista}", method = RequestMethod.DELETE, produces = "application/json")
+	public ResponseEntity<Void> delete(@PathVariable("idPermissaoLista") Long idPermissaoLista) {
 
 		try {
-			permissaoService.deletePermissao(idPermissao);
-			_logger.info("Permissão exluida com sucesso!");
+			permissaoListaService.deletePermissaoLista(idPermissaoLista);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (EmptyResultDataAccessException e) {
-			_logger.warn("Nenhuma permissao foi encontrado para excluir com o ID: {}", idPermissao);
+			_logger.warn("Nenhuma registro de permissaoLista foi encontrado para excluir com o ID: {}", idPermissaoLista);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			_logger.error("Erro ao excluir a permissao por ID: {}", idPermissao, e.getCause());
+			_logger.error("Erro ao excluir o registro de permissaoLista por ID: {}", idPermissaoLista, e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -126,30 +123,29 @@ public class PermissaoController {
 	
 	
 
-	@ApiOperation(value = "CONSULTAR PERMISSÃO POR ID - (Permissao)")
+	@ApiOperation(value = "CONSULTAR PERMISSÃO POR PERFIL POR ID - (PermissaoLista)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "ok"),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
 			@ApiResponse(code = 403, message = "Acesso Proibido"),
 			@ApiResponse(code = 404, message = "Não Localizado"),
 			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
-	@RequestMapping(value = "/findById/{idPermissao}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<PermissaoDto> findById(@PathVariable("idPermissao") Long idPermissao) {
+	@RequestMapping(value = "/findById/{idPermissaoLista}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<PermissaoListaDto> findById(@PathVariable("idPermissaoLista") Long idPermissaoLista) {
 
-		try {
-			_logger.info("Permissão encontrada com sucesso!");
-			return new ResponseEntity<>(permissaoService.findPermissaoById(idPermissao),(HttpStatus.OK));			
+		try {						 
+			return new ResponseEntity<>(permissaoListaService.findPermissaoListaById(idPermissaoLista),(HttpStatus.OK));			 
 		} catch (NoSuchElementException e) {
-			_logger.warn("Permissao não encontrada para o ID: {}", idPermissao);
+			_logger.warn("O registro da Permissão de perfil não encontrada para o ID: {}", idPermissaoLista);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			_logger.error("Erro ao buscar o permissao por ID: {}", idPermissao, e.getCause());
+			_logger.error("Erro ao buscar a Permissão de perfil por ID: {}", idPermissaoLista, e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 
-	@ApiOperation(value = "CONSULTAR LISTA DE PERMISSÕES - (Permissao)")
+	@ApiOperation(value = "CONSULTAR LISTA DE PERMISSÕES POR PERFIL - (PermissaoLista)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Retorna a lista de regras"),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
@@ -157,20 +153,21 @@ public class PermissaoController {
 			@ApiResponse(code = 404, message = "Não Localizado"),
 			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<PermissaoDto>> findAll() {
+	public ResponseEntity<List<PermissaoListaDto>> findAll() {
 
 		try {
-			List<PermissaoDto> rulers = permissaoService.findAllPermissaos();
-			if (!rulers.isEmpty()) {
-				_logger.info("Lista de permissões obtida com sucesso!");
-				return new ResponseEntity<>(rulers, HttpStatus.OK);
+			List<PermissaoListaDto> permissaoLista = permissaoListaService.findAllPermissaoListas();
+			if (!permissaoLista.isEmpty()) {
+				_logger.info("Lista de permissões de perfil obtida com sucesso!");
+				return new ResponseEntity<>(permissaoLista, HttpStatus.OK);
 			} else {
-				_logger.warn("Lista de permissões está vazia!");
+				_logger.warn("Lista de permissões de perfil está vazia!");
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			_logger.error("Erro ao listar as permissões: ", e.getCause());
+			_logger.error("Erro ao listar as permissões por perfil: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 }

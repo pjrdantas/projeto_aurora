@@ -55,6 +55,7 @@ public class UsuarioController {
 		try {		
 			this.usuario.createUsuarioDto(usuarioDto);
 			if (usuarioDto != null) {
+				_logger.info("Usuário criado com sucesso!");
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else {
 				_logger.error("O registro não pode ser nulo. Por favor, forneça os dados necessários.");
@@ -84,6 +85,7 @@ public class UsuarioController {
 
 		try {
 			this.usuario.updateUsuarioDto(usuarioDto);
+			_logger.info("Usuário atualizado com sucesso!");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {
 			_logger.error("Erro de integridade ao atualizar o usuario. Verifique se os dados são válidos.",
@@ -110,6 +112,7 @@ public class UsuarioController {
 
 		try {
 			usuario.deleteUsuario(idUsuario);
+			_logger.info("Usuario excluido com sucesso!");
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (EmptyResultDataAccessException e) {
 			_logger.warn("Nenhuma usuario foi encontrado para excluir com o ID: {}", idUsuario);
@@ -145,7 +148,7 @@ public class UsuarioController {
 	}
 
 
-	@ApiOperation(value = "CONSULTAR LISTA DE PERFIS - (Usuario)")
+	@ApiOperation(value = "CONSULTAR LISTA DE USUARIO - (Usuario)")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Retorna a lista de regras"),
 			@ApiResponse(code = 401, message = "Não Autorizado"),
@@ -158,14 +161,14 @@ public class UsuarioController {
 		try {
 			List<UsuarioDto> rulers = usuario.findAllUsuarios();
 			if (!rulers.isEmpty()) {
-				_logger.info("Lista de permissões obtida com sucesso!");
+				_logger.info("Lista de usuários obtida com sucesso!");
 				return new ResponseEntity<>(rulers, HttpStatus.OK);
 			} else {
-				_logger.warn("Lista de permissões está vazia!");
+				_logger.warn("Lista de usuários está vazia!");
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			_logger.error("Erro ao listar as permissões: ", e.getCause());
+			_logger.error("Erro ao listar os usuários: ", e.getCause());
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

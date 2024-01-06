@@ -33,16 +33,16 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		sql.append("  TB_USUARIO_LOGIN, ");
 		sql.append("  TB_USUARIO_NOME, ");
 		sql.append("  TB_USUARIO_SENHA, ");
-		sql.append("  TB_PERFIL_ID) ");
+		sql.append("  TB_PESSOA_ID) ");
 
-		sql.append("  values (:tbUsuarioAtivo, :tbUsuarioDataCadastrado, :tbUsuarioLogin, :tbUsuarioNome, :tbUsuarioSenha, :tbPerfil)");
+		sql.append("  values (:tbUsuarioAtivo, :tbUsuarioDataCadastrado, :tbUsuarioLogin, :tbUsuarioNome, :tbUsuarioSenha, :tbPessoa)");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("tbUsuarioAtivo", usuarioDto.getUsuarioLogin())
 				.addValue("tbUsuarioDataCadastrado", usuarioDto.getUsuarioDataCadastrado())
 				.addValue("tbUsuarioLogin", usuarioDto.getUsuarioLogin())
 				.addValue("tbUsuarioNome", usuarioDto.getUsuarioNome())
 				.addValue("tbUsuarioSenha", usuarioDto.getUsuarioSenha())
-				.addValue("tbPerfil", usuarioDto.getPerfilDto());
+				.addValue("tbPessoa", usuarioDto.getTbPessoa());
 
 		jdbcTemplate.update(sql.toString(), params);
 	
@@ -59,7 +59,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		sql.append(" TB_USUARIO_LOGIN = :tbUsuarioLogin, ");
 		sql.append(" TB_USUARIO_NOME = :tbUsuarioLogin, ");
 		sql.append(" TB_USUARIO_SENHA = :tbUsuarioSenha, ");
-		sql.append(" TB_PERFIL_ID ");
+		sql.append(" TB_PESSOA_ID ");
 		sql.append(" WHERE id = :id");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("id", usuarioDto.getIdUsuario())
@@ -68,7 +68,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 				.addValue("tbUsuarioLogin", usuarioDto.getUsuarioLogin())
 				.addValue("tbUsuarioNome", usuarioDto.getUsuarioNome())
 				.addValue("tbUsuarioSenha", usuarioDto.getUsuarioSenha())
-				.addValue("tbPerfil", usuarioDto.getPerfilDto());
+				.addValue("tbPessoa", usuarioDto.getTbPessoa());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}

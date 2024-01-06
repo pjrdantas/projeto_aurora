@@ -70,6 +70,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 
 	@Override
 	public PermissaoDto findPermissaoById(Long id) throws SQLException {
+		
 		StringBuilder sql = new StringBuilder(sqlSelectPrincipal);
 		sql.append(" WHERE id = :id ");
 		SqlParameterSource params = new MapSqlParameterSource().addValue("id", id);

@@ -30,12 +30,12 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append("  TB_PERFIL (");
 		sql.append("  TB_PERFIL_DESCRICAO, ");
 		sql.append("  TB_PERFIL_NOME, ");
-		sql.append("  TB_PERMISSAO_ID) ");
-		sql.append("  values (:tbPerfilDescricao, :tbPerfilNome, :tbPermissao)");
+		sql.append("  TB_USUARIO_ID) ");
+		sql.append("  values (:tbPerfilDescricao, :tbPerfilNome, :tbUsuario)");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
 				.addValue("tbPerfilNome", perfilDto.getPerfilNome())
-				.addValue("tbPermissao", perfilDto.getIdPermissao());
+				.addValue("tbUsuario", perfilDto.getTbUsuario());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
@@ -48,13 +48,13 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 		sql.append(" SET  ");
 		sql.append(" TB_PERFIL_DESCRICAO = :tbPerfilDescricao, ");
 		sql.append(" TB_PERFIL_NOME = :tbPerfilNome, ");
-		sql.append(" TB_PERMISSAO_ID ");
+		sql.append(" TB_USUARIO_ID = :tbUsuario");
 		sql.append(" WHERE id = :id");
 		SqlParameterSource params = new MapSqlParameterSource()
 				.addValue("id", perfilDto.getIdPerfil())
 				.addValue("tbPerfilDescricao", perfilDto.getPerfilDescricao())
 				.addValue("tbPerfilNome", perfilDto.getPerfilNome())
-				.addValue("tbPermissao", perfilDto.getIdPermissao());
+				.addValue("tbUsuario", perfilDto.getTbUsuario());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}
