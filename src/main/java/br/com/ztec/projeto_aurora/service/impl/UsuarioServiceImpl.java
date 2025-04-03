@@ -22,9 +22,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	@Override
-	public void createUsuarioDto(UsuarioDto usuarioDto) throws SQLException {
+	public void createUsuario(UsuarioDto usuarioDto) throws SQLException {
         try {
-        	usuarioRepository.createUsuarioDto(usuarioDto);
+        	usuarioRepository.createUsuario(usuarioDto);
         } catch (SQLException e) {
             _logger.error("Erro ao criar o usuário", e.toString());
             throw new CreationException("Erro ao criar o usuário", e);
@@ -32,9 +32,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void updateUsuarioDto(UsuarioDto usuarioDto) throws SQLException {
+	public void updateUsuario(UsuarioDto usuarioDto) throws SQLException {
         try {
-        	usuarioRepository.updateUsuarioDto(usuarioDto);
+        	usuarioRepository.updateUsuario(usuarioDto);
         } catch (SQLException e) {
             _logger.error("Erro ao atualizar o usuário", e.toString());            
         }
@@ -54,7 +54,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         try {
             return usuarioRepository.findUsuarioById(id);
         } catch (SQLException e) {
-            _logger.error("Erro ao buscar o usuário com ID: " + id, e.toString());            
+            _logger.error("Erro ao buscar o usuário com ID: " + id, e.toString());   
+            
             return null;
         }
 

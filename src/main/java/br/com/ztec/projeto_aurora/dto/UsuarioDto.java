@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import br.com.ztec.projeto_aurora.entity.TbPessoa;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,7 +42,7 @@ public class UsuarioDto {
 	private String usuarioSenha;
 
 	@JsonProperty("pessoaId")
-	private TbPessoa tbPessoa;
+	private PessoaDto pessoaDto;
 
 	public UsuarioDto() {
 	}

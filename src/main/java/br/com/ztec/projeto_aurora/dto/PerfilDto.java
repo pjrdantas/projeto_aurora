@@ -15,7 +15,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.USE_DEFAULTS)
-@JsonPropertyOrder({ "idPerfil", "perfilDescricao", "perfilNome" })
+@JsonPropertyOrder({ "idPerfil", "perfilDescricao", "perfilNome", "usuarioId" })
 public class PerfilDto {
 
 	@JsonProperty("idPerfil")

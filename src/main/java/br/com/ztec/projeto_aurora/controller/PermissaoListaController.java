@@ -53,7 +53,7 @@ public class PermissaoListaController {
 	public ResponseEntity<Void>  create(@RequestBody PermissaoListaDto permissaoListaDto) {
 		
 		try {		
-			this.permissaoListaService.createPermissaoListaDto(permissaoListaDto);
+			this.permissaoListaService.createPermissaoLista(permissaoListaDto);
 			if (permissaoListaDto != null) {
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else {
@@ -83,7 +83,7 @@ public class PermissaoListaController {
 	public ResponseEntity<Void> update(@RequestBody PermissaoListaDto permissaoListaDto) {
 
 		try {
-			this.permissaoListaService.updatePermissaoListaDto(permissaoListaDto);
+			this.permissaoListaService.updatePermissaoLista(permissaoListaDto);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {
 			_logger.error("Erro de integridade ao atualizar o registro da Permissão de perfil. Verifique se os dados são válidos.",

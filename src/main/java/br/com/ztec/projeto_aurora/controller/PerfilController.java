@@ -53,8 +53,8 @@ public class PerfilController {
 	public ResponseEntity<Void>  create(@RequestBody PerfilDto perfilDto) {
 		
 		try {		
-			this.perfilService.createPerfilDto(perfilDto);
 			if (perfilDto != null) {
+				this.perfilService.createPerfil(perfilDto);			
 				_logger.info("Perfil criado com sucesso!");
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else {
@@ -84,7 +84,7 @@ public class PerfilController {
 	public ResponseEntity<Void> update(@RequestBody PerfilDto perfilDto) {
 
 		try {
-			this.perfilService.updatePerfilDto(perfilDto);
+			this.perfilService.updatePerfil(perfilDto);
 			_logger.info("Perfil atualizado com sucesso!");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {

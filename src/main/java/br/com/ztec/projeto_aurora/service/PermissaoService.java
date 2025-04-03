@@ -10,8 +10,8 @@ import br.com.ztec.projeto_aurora.dto.PermissaoDto;
 public interface PermissaoService {
 
 
-	void createPermissaoDto(PermissaoDto permissaoDto)  throws SQLException;   
-	void updatePermissaoDto(PermissaoDto permissaoDto)  throws SQLException;   
+	void createPermissao(PermissaoDto permissaoDto)  throws SQLException;   
+	void updatePermissao(PermissaoDto permissaoDto)  throws SQLException;   
 	void deletePermissao(Long id)  throws SQLException;   
 	PermissaoDto findPermissaoById(Long id)  throws SQLException;   
 	List<PermissaoDto> findAllPermissaos()  throws SQLException;   

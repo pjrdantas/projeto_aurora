@@ -53,7 +53,7 @@ public class PermissaoController {
 	public ResponseEntity<Void>  create(@RequestBody PermissaoDto permissaoDto) {
 		
 		try {		
-			this.permissaoService.createPermissaoDto(permissaoDto);
+			this.permissaoService.createPermissao(permissaoDto);
 			if (permissaoDto != null) {
 				_logger.info("Permissão criada com sucesso!");
 				return new ResponseEntity<>(HttpStatus.CREATED);
@@ -84,7 +84,7 @@ public class PermissaoController {
 	public ResponseEntity<Void> update(@RequestBody PermissaoDto permissaoDto) {
 
 		try {
-			this.permissaoService.updatePermissaoDto(permissaoDto);
+			this.permissaoService.updatePermissao(permissaoDto);
 			_logger.info("Permissão atualizada com sucesso!");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {

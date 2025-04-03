@@ -23,7 +23,7 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Override
-	public void createPerfilDto(PerfilDto perfilDto) throws SQLException {
+	public void createPerfil(PerfilDto perfilDto) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("  INSERT INTO ");
@@ -41,7 +41,7 @@ public class PerfilRepositoryImpl implements PerfilRepository {
 	}
 
 	@Override
-	public void updatePerfilDto(PerfilDto perfilDto) throws SQLException {
+	public void updatePerfil(PerfilDto perfilDto) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" UPDATE TB_PERFIL ");

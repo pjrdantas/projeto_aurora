@@ -22,9 +22,9 @@ public class PermissaoServiceImpl implements PermissaoService {
 	private PermissaoRepository permissaoRepository;
 
 	@Override
-	public void createPermissaoDto(PermissaoDto permissaoDto) throws SQLException {
+	public void createPermissao(PermissaoDto permissaoDto) throws SQLException {
         try {
-        	permissaoRepository.createPermissaoDto(permissaoDto);
+        	permissaoRepository.createPermissao(permissaoDto);
         } catch (SQLException e) {
             _logger.error("Erro ao criar a permissão", e.toString());
             throw new CreationException("Erro ao criar a permissão", e);
@@ -32,9 +32,9 @@ public class PermissaoServiceImpl implements PermissaoService {
 	}
 
 	@Override
-	public void updatePermissaoDto(PermissaoDto permissaoDto) throws SQLException {
+	public void updatePermissao(PermissaoDto permissaoDto) throws SQLException {
         try {
-        	permissaoRepository.updatePermissaoDto(permissaoDto);
+        	permissaoRepository.updatePermissao(permissaoDto);
         } catch (SQLException e) {
             _logger.error("Erro ao atualizar a permissão", e.toString());            
         }

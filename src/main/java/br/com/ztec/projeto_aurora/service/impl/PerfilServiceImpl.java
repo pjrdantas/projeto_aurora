@@ -22,9 +22,9 @@ public class PerfilServiceImpl implements PerfilService {
 	private PerfilRepository perfilRepository;
 
 	@Override
-	public void createPerfilDto(PerfilDto perfilDto) throws SQLException {
+	public void createPerfil(PerfilDto perfilDto) throws SQLException {
         try {
-        	perfilRepository.createPerfilDto(perfilDto);
+        	perfilRepository.createPerfil(perfilDto);
         } catch (SQLException e) {
             _logger.error("Erro ao criar o perfil", e.toString());
             throw new CreationException("Erro ao criar o perfil", e);
@@ -32,9 +32,9 @@ public class PerfilServiceImpl implements PerfilService {
 	}
 
 	@Override
-	public void updatePerfilDto(PerfilDto perfilDto) throws SQLException {
+	public void updatePerfil(PerfilDto perfilDto) throws SQLException {
         try {
-        	perfilRepository.updatePerfilDto(perfilDto);
+        	perfilRepository.updatePerfil(perfilDto);
         } catch (SQLException e) {
             _logger.error("Erro ao atualizar o perfil", e.toString());           
         }		

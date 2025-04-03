@@ -53,7 +53,7 @@ public class UsuarioController {
 	public ResponseEntity<Void>  create(@RequestBody UsuarioDto usuarioDto) {
 		
 		try {		
-			this.usuario.createUsuarioDto(usuarioDto);
+			this.usuario.createUsuario(usuarioDto);
 			if (usuarioDto != null) {
 				_logger.info("Usuário criado com sucesso!");
 				return new ResponseEntity<>(HttpStatus.CREATED);
@@ -84,7 +84,7 @@ public class UsuarioController {
 	public ResponseEntity<Void> update(@RequestBody UsuarioDto usuarioDto) {
 
 		try {
-			this.usuario.updateUsuarioDto(usuarioDto);
+			this.usuario.updateUsuario(usuarioDto);
 			_logger.info("Usuário atualizado com sucesso!");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (DataIntegrityViolationException e) {

@@ -23,7 +23,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
 	@Override
-	public void createUsuarioDto(UsuarioDto usuarioDto) throws SQLException {
+	public void createUsuario(UsuarioDto usuarioDto) throws SQLException {
 		StringBuilder sql = new StringBuilder();
 
 		sql.append("  INSERT INTO ");
@@ -42,14 +42,14 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 				.addValue("tbUsuarioLogin", usuarioDto.getUsuarioLogin())
 				.addValue("tbUsuarioNome", usuarioDto.getUsuarioNome())
 				.addValue("tbUsuarioSenha", usuarioDto.getUsuarioSenha())
-				.addValue("tbPessoa", usuarioDto.getTbPessoa());
+				.addValue("tbPessoa", usuarioDto.getPessoaDto());
 
 		jdbcTemplate.update(sql.toString(), params);
 	
 	}
 
 	@Override
-	public void updateUsuarioDto(UsuarioDto usuarioDto) throws SQLException {
+	public void updateUsuario(UsuarioDto usuarioDto) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append(" UPDATE TB_USUARIO ");
@@ -68,7 +68,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 				.addValue("tbUsuarioLogin", usuarioDto.getUsuarioLogin())
 				.addValue("tbUsuarioNome", usuarioDto.getUsuarioNome())
 				.addValue("tbUsuarioSenha", usuarioDto.getUsuarioSenha())
-				.addValue("tbPessoa", usuarioDto.getTbPessoa());
+				.addValue("tbPessoa", usuarioDto.getPessoaDto());
 		jdbcTemplate.update(sql.toString(), params);
 		
 	}

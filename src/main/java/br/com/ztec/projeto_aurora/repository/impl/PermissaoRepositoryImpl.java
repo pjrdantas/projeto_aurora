@@ -21,7 +21,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Override
-	public void createPermissaoDto(PermissaoDto permissaoDto) throws SQLException {
+	public void createPermissao(PermissaoDto permissaoDto) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("  INSERT INTO ");
@@ -38,7 +38,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 
 
 	@Override
-	public void updatePermissaoDto(PermissaoDto permissaoDto) throws SQLException {
+	public void updatePermissao(PermissaoDto permissaoDto) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" UPDATE TB_PERMISSAO ");

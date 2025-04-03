@@ -23,9 +23,9 @@ public class PermissaoListaServiceImpl implements PermissaoListaService {
 	private PermissaoListaRepository permissaoListaRepository;
 
 	@Override
-	public void createPermissaoListaDto(PermissaoListaDto permissaoListaDto) throws SQLException {
+	public void createPermissaoLista(PermissaoListaDto permissaoListaDto) throws SQLException {
 		 try {
-			 permissaoListaRepository.createPermissaoListaDto(permissaoListaDto);
+			 permissaoListaRepository.createPermissaoLista(permissaoListaDto);
 	        } catch (SQLException e) {
 	            _logger.error("Erro ao criar a lista de permissão", e.toString());
 	            throw new CreationException("Erro ao criar a lista de permissão", e);
@@ -34,9 +34,9 @@ public class PermissaoListaServiceImpl implements PermissaoListaService {
 	}
 
 	@Override
-	public void updatePermissaoListaDto(PermissaoListaDto permissaoListaDto) throws SQLException {
+	public void updatePermissaoLista(PermissaoListaDto permissaoListaDto) throws SQLException {
 		 try {
-			 permissaoListaRepository.updatePermissaoListaDto(permissaoListaDto);
+			 permissaoListaRepository.updatePermissaoLista(permissaoListaDto);
 	        } catch (SQLException e) {
 	            _logger.error("Erro ao atualizar a lista de permissão", e.toString());            
 	        }

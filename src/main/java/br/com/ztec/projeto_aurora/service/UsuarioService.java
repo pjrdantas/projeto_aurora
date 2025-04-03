@@ -10,8 +10,8 @@ import br.com.ztec.projeto_aurora.dto.UsuarioDto;
 public interface UsuarioService {
 
 
-	void createUsuarioDto(UsuarioDto usuarioDto)  throws SQLException;   
-	void updateUsuarioDto(UsuarioDto usuarioDto)  throws SQLException;   
+	void createUsuario(UsuarioDto usuarioDto)  throws SQLException;   
+	void updateUsuario(UsuarioDto usuarioDto)  throws SQLException;   
 	void deleteUsuario(Long id)  throws SQLException;   
 	UsuarioDto findUsuarioById(Long id)  throws SQLException;   
 	List<UsuarioDto> findAllUsuarios()  throws SQLException;   

@@ -3,7 +3,8 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="projeto_aurora">
+
+	<persistence-unit name="projeto_aurora" transaction-type="RESOURCE_LOCAL">
 		<class>br.com.ztec.projeto_aurora.entity.TbContato</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbDocumento</class>
 		<class>br.com.ztec.projeto_aurora.entity.TbEmail</class>
@@ -16,10 +17,11 @@
 		<class>br.com.ztec.projeto_aurora.entity.TbPermissaoLista</class>
 
 		<properties>
-			<property name="javax.persistence.jdbc.url"	value="jdbc:oracle:thin:@localhost:1521/XEPDB1" />
+			<property name="javax.persistence.jdbc.url"	value="jdbc:oracle:thin:@192.168.0.108:1521/XEPDB1" />
 			<property name="javax.persistence.jdbc.user" value="ROOT" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
 		</properties>
+	
 	</persistence-unit>
 </persistence>
